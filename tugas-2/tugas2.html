@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pikachu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Get Pikachu</h1>
+    <button id="getBtn">Get!</button>
+    <div id="container">
+        <span id="number"></span>
+        <span id="name"></span>
+        <div>
+            <img id="img" src="" alt="">
+        </div>
+        <span id="type"></span>
+    </div>
+
+    <script>
+        const btn = document.getElementById("getBtn");
+        btn.addEventListener("click", function () {
+            displayPikachu();
+        });
+
+        async function fetchData() {
+            let url = "https://pokeapi.co/api/v2/pokemon/25";
+            const response = await fetch(url , {
+            method: "GET",
+            });
+            
+            const json = await response.json();
+            console.log(json);
+            return json;
+        }
+
+        async function displayPikachu() {
+            const data = await fetchData();
+            let number = document.getElementById("number");
+            let name = document.getElementById("name");
+            let type = document.getElementById("type");
+            let div = document.getElementById("container");
+
+            div.style.background = "#FFFF00";
+            div.style.display = "inline-block";
+            number.innerHTML = `${data.id}: `;
+            name.innerHTML = data.name;
+            document.getElementById("img").src = data.sprites.front_shiny;
+            // document.getElementById("img").src = data.sprites.back_shiny;
+            type.innerHTML = `type: ${data.types[0].type.name}`;        // Array dibiarkan bernilai 0
+        }
+
+        
+    </script>
+</body>
+</html>

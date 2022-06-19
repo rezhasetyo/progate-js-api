@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progate</title>
+</head>
+<body>
+    <h1>Mulai Menggunakan AJAX</h1>
+
+    <button type="button" onclick="fetchData()">Fetch Data</button>
+    <div id="progate"></div>
+
+    <script>
+        function fetchData() {
+            const xhttp = new XMLHttpRequest();
+            const url = "https://pokeapi.co/api/v2/pokemon?limit=10";
+            const httpMethod = "GET";
+            xhttp.onload = function () {
+                // Apa yang telah kita lahkukan ketika response sudah tersedia
+                    // console.log(this.responseText);
+                    const response = JSON.parse(this.responseText);
+                    const results = response.results;
+
+                let data = '';
+                for (i = 0; i < results.length; i++) {
+                    data = data + `<p>${results[i].name}</p>`;
+                }
+
+                document.getElementById("progate").innerHTML = data;
+            }
+            xhttp.open(httpMethod, url);
+            xhttp.send();
+        }
+    </script>
+</body>
+</html>
