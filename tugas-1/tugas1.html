@@ -20,11 +20,11 @@
             text = document.getElementById('id1').value
             if (text == 0){
                 text = 'Invalid Input';
-            } elseif(text %5 == 0  &&  text %3 !=0){
+            } else if(text %5 == 0  &&  text %3 !=0){
                 text = 'Buzz';
-            } elseif(text %5 == 0  &&  text %3 ==0){
+            } else if(text %5 == 0  &&  text %3 ==0){
                 text = 'Fizzbuzz';
-            } elseif(text %3 == 0  &&  text %5 !=0){
+            } else if(text %3 == 0  &&  text %5 !=0){
                 text = 'Fizz';
             }
             document.getElementById('demo').innerHTML = text;
