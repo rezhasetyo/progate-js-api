@@ -1,2 +1,1 @@
-# Pengumpulan Tugas
-Link Deploy : rezhasetyo.github.io
+# Pengumpulan Tugas Progate
